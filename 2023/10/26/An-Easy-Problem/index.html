@@ -170,7 +170,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/C/" style="color: #ffa2c4">C++</a>
+                <a href="/tags/C/" style="color: #03a9f4">C++</a>
             </span>
             
         </span>
@@ -201,37 +201,7 @@
 <p>83</p>
 <hr>
 <p>其实我最先想到的是用字符串写，但是发现过于复杂，其实用数学问题就可以解决。。。也就是用数学的短除法，当余数为1时，存储1的数组就增加一个，然后确定1的数量，在原数字+1过程中再获取每个数字的1的数量，比较1的的数量，如果一样就输出。</p>
-<pre name="code" class="c++">
-#include<bits/stdc++.h>
-using namespace std;
-int a[10086],b[10086],o[10086],n;
-int main(){
-    int j=0;
-    while(cin>>a[j],a[j]){   //输入数字并存入数组，判断每次输入的数字是否为0
-        int t=a[j];
-        while(t){
-            if(t%2==1)o[j]++;    //短除法判断每次余数是否为1
-            t/=2;
-        }
-        j++;
-    }
-    for(int i=0;i<j;i++){
-        while(a[i]++){
-            int f=0;
-            int t=a[i];
-            while(t){
-            if(t%2==1)f++;  
-            t/=2;
-            }
-            if(f==o[i]){    //判断数字1的数量是否等于原数字1的数量
-                cout<<a[i]<<endl;
-                break;
-            }        
-        }
-    }
-    return 0;
-}
-</pre>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span>  </span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;  </span><br><span class="line"><span class="type">int</span> a[<span class="number">10086</span>],b[<span class="number">10086</span>],o[<span class="number">10086</span>],n;  </span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;  </span><br><span class="line">    <span class="type">int</span> j=<span class="number">0</span>;  </span><br><span class="line">    <span class="keyword">while</span>(cin&gt;&gt;a[j],a[j])&#123;   <span class="comment">//输入数字并存入数组，判断每次输入的数字是否为0  </span></span><br><span class="line">        <span class="type">int</span> t=a[j];  </span><br><span class="line">        <span class="keyword">while</span>(t)&#123;  </span><br><span class="line">            <span class="keyword">if</span>(t%<span class="number">2</span>==<span class="number">1</span>)o[j]++;    <span class="comment">//短除法判断每次余数是否为1  </span></span><br><span class="line">            t/=<span class="number">2</span>;  </span><br><span class="line">        &#125;  </span><br><span class="line">        j++;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;j;i++)&#123;  </span><br><span class="line">        <span class="keyword">while</span>(a[i]++)&#123;  </span><br><span class="line">            <span class="type">int</span> f=<span class="number">0</span>;  </span><br><span class="line">            <span class="type">int</span> t=a[i];  </span><br><span class="line">            <span class="keyword">while</span>(t)&#123;  </span><br><span class="line">            <span class="keyword">if</span>(t%<span class="number">2</span>==<span class="number">1</span>)f++;    </span><br><span class="line">            t/=<span class="number">2</span>;  </span><br><span class="line">            &#125;  </span><br><span class="line">            <span class="keyword">if</span>(f==o[i])&#123;    <span class="comment">//判断数字1的数量是否等于原数字1的数量  </span></span><br><span class="line">                cout&lt;&lt;a[i]&lt;&lt;endl;  </span><br><span class="line">                <span class="keyword">break</span>;  </span><br><span class="line">            &#125;          </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">&#125;  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
