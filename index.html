@@ -181,7 +181,31 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h6 id="相关OJ"><a href="#相关OJ" class="headerlink" title="相关OJ"></a>相关OJ</h6><p><a target="_blank" rel="noopener" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1223">一本通</a></p>
+            <span id="more"></span>  
+
+<h6 id="相关OJ"><a href="#相关OJ" class="headerlink" title="相关OJ"></a>相关OJ</h6><p><a target="_blank" rel="noopener" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1223">一本通</a></p>
+<hr>
+<h4 id="【题目描述】"><a href="#【题目描述】" class="headerlink" title="【题目描述】"></a>【题目描述】</h4><p>        给定一个正整数N，求最小的、比N大的正整数M，使得M与N的二进制表示中有相同数目的1。</p>
+<p>        举个例子，假如给定的N为78，其二进制表示为1001110，包含4个1，那么最小的比N大的并且二进制表示中只包含4个1的数是83，其二进制是1010011，因此83就是答案。</p>
+<h4 id="【输入】"><a href="#【输入】" class="headerlink" title="【输入】"></a>【输入】</h4><p>        输入若干行，每行一个数n(1≤n≤1000000)，输入”0”结束。</p>
+<h4 id="【输出】"><a href="#【输出】" class="headerlink" title="【输出】"></a>【输出】</h4><p>        输出若干行对应的值。</p>
+<h4 id="【输入样例】"><a href="#【输入样例】" class="headerlink" title="【输入样例】"></a>【输入样例】</h4><p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>78</p>
+<p>0</p>
+<h4 id="【输出样例】"><a href="#【输出样例】" class="headerlink" title="【输出样例】"></a>【输出样例】</h4><p>2</p>
+<p>4</p>
+<p>5</p>
+<p>8</p>
+<p>83</p>
+<hr>
+<p>其实我最先想到的是用字符串写，但是发现过于复杂，其实用数学问题就可以解决。。。也就是用数学的短除法，当余数为1时，存储1的数组就增加一个，然后确定1的数量，在原数字+1过程中再获取每个数字的1的数量，比较1的的数量，如果一样就输出。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> a[<span class="number">10086</span>],b[<span class="number">10086</span>],o[<span class="number">10086</span>],n;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="type">int</span> j=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(cin&gt;&gt;a[j],a[j])&#123; <span class="comment">//输入数字并存入数组，判断每次输入的数字是否为0</span></span><br><span class="line">		<span class="type">int</span> t=a[j];</span><br><span class="line">		<span class="keyword">while</span>(t)&#123;</span><br><span class="line">			<span class="keyword">if</span>(t%<span class="number">2</span>==<span class="number">1</span>)o[j]++;  <span class="comment">//短除法判断每次余数是否为1</span></span><br><span class="line">			t/=<span class="number">2</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		j++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;j;i++)&#123;</span><br><span class="line">		<span class="keyword">while</span>(a[i]++)&#123;</span><br><span class="line">			<span class="type">int</span> f=<span class="number">0</span>;</span><br><span class="line">			<span class="type">int</span> t=a[i];</span><br><span class="line">			<span class="keyword">while</span>(t)&#123;</span><br><span class="line">			<span class="keyword">if</span>(t%<span class="number">2</span>==<span class="number">1</span>)f++;  </span><br><span class="line">			t/=<span class="number">2</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(f==o[i])&#123;  <span class="comment">//判断数字1的数量是否等于原数字1的数量</span></span><br><span class="line">				cout&lt;&lt;a[i]&lt;&lt;endl;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;		</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
             
         </div>
     </div>
@@ -195,7 +219,7 @@
         
         <span class="tag">
             
-            <a href="/tags/C/" style="color: #00bcd4">C++</a>
+            <a href="/tags/C/" style="color: #03a9f4">C++</a>
         </span>
         
     </div>
@@ -261,7 +285,7 @@
         </div>
         <div class="name">xiaoshihoutian</div>
         <div class="description">
-            <p>Description<br><a href="mailto:&#120;&#105;&#x61;&#x6f;&#x73;&#x68;&#x69;&#104;&#111;&#x75;&#116;&#105;&#x61;&#x6e;&#x40;&#103;&#109;&#97;&#x69;&#108;&#46;&#99;&#x6f;&#x6d;">&#120;&#105;&#x61;&#x6f;&#x73;&#x68;&#x69;&#104;&#111;&#x75;&#116;&#105;&#x61;&#x6e;&#x40;&#103;&#109;&#97;&#x69;&#108;&#46;&#99;&#x6f;&#x6d;</a></p>
+            <p>Description<br><a href="mailto:&#120;&#105;&#x61;&#111;&#x73;&#x68;&#x69;&#x68;&#111;&#117;&#116;&#105;&#x61;&#x6e;&#64;&#103;&#109;&#x61;&#105;&#108;&#x2e;&#99;&#x6f;&#x6d;">&#120;&#105;&#x61;&#111;&#x73;&#x68;&#x69;&#x68;&#111;&#117;&#116;&#105;&#x61;&#x6e;&#64;&#103;&#109;&#x61;&#105;&#108;&#x2e;&#99;&#x6f;&#x6d;</a></p>
 
         </div>
         
